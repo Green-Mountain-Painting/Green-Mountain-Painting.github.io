@@ -1,0 +1,15 @@
+title:               Green Mountain Painting
+url:                 https://paintmegmp.com
+port:                4000
+permalink:           /:title
+paginate:            5
+sass:
+    sass_dir:          _sass
+    style:             :compressed
+gems:
+    - jekyll-sitemap
+exclude:
+    - CNAME
+    - README.md
+    - build/tmp
+    - .gradle

@@ -1,20 +1,34 @@
 @charset "utf-8";
 
 // Variables
-$primary-color: #5C743D;      // Original deep green
-$secondary-color: #99CC66;    // Original light green
-$accent-color: #993300;       // Original brown
-$text-color: #666666;         // Original text color
-$light-bg: #F4FFE4;           // Original light background
-$dark-bg: #5C743D;            // Original dark green
-$border-radius: 12px;         // Modern border radius
-$transition: all 0.3s ease;   // Smooth transitions
-$shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-$shadow-md: 0 4px 6px rgba(0,0,0,0.1);
-$shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+$primary-color: #5C743D;      // Deep green
+$secondary-color: #99CC66;    // Light green
+$accent-color: #993300;       // Brown
+$text-color: #666666;         // Text color
+$light-bg: #F4FFE4;           // Light background
+$dark-bg: #5C743D;            // Dark green
+$white: #FFFFFF;
 
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 3rem;
+$spacing-xl: 4rem;
+
+// Typography
 $font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 $font-secondary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+// Breakpoints
+$mobile: 768px;
+
+// Common Styles
+$border-radius: 12px;
+$transition: all 0.3s ease;
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 
 // Mixins
 @mixin flex-center {
@@ -23,16 +37,50 @@ $font-secondary: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro
   justify-content: center;
 }
 
-@mixin responsive-container {
+@mixin content-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
-  width: 100%;
+  padding: 0 $spacing-md;
   
-  @media (max-width: 768px) {
-    padding: 0 1rem;
-    margin: 0;
+  @media (max-width: $mobile) {
+    padding: 0 $spacing-sm;
   }
+}
+
+@mixin section-heading {
+  font-family: $font-secondary;
+  color: $primary-color;
+  font-size: 2.25rem;
+  margin-bottom: $spacing-md;
+  font-weight: 700;
+  letter-spacing: 0.21em;
+  text-align: center;
+  position: relative;
+  padding-left: 0;
+}
+
+@mixin card-style {
+  background: $white;
+  padding: $spacing-lg;
+  border-radius: $border-radius;
+  box-shadow: $shadow-md;
+  transition: $transition;
+  border: 1px solid $secondary-color;
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin text-overlay {
+  color: $white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background-color: rgba($primary-color, 0.6);
+  padding: $spacing-xs $spacing-sm;
+  border-radius: 4px;
 }
 
 // Base styles
@@ -42,12 +90,12 @@ body {
   color: $text-color;
   background-color: $light-bg;
   margin: 0;
-  padding: 0;
+    padding: 0;
   font-size: 16px;
 }
 
 .container {
-  @include responsive-container;
+  @include content-container;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -58,11 +106,6 @@ body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-  
-  @media (max-width: 768px) {
-    margin: 0;
-    padding: 0;
-  }
 }
 
 // Header
@@ -72,11 +115,6 @@ body {
   position: relative;
   overflow: hidden;
   width: 100%;
-  max-width: 100%;
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: 0;
-  margin-right: 0;
  
   .header-banner {
     width: 100%;
@@ -99,65 +137,21 @@ body {
       text-align: center;
       
       .company-name {
-        font-family: $font-secondary;
-        color: white;
+        @include text-overlay;
         font-size: 2rem;
-        margin-bottom: 1rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        background-color: rgba($primary-color, 0.6);
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
+        margin-bottom: $spacing-sm;
         display: inline-block;
       }
       
       .tagline {
-        font-family: $font-secondary;
-        color: white;
+        @include text-overlay;
         font-size: 1.2rem;
         letter-spacing: 0.4em;
         text-transform: uppercase;
-        text-align: center;
-        line-height: 1.4;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        background-color: rgba($primary-color, 0.45);
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
         display: inline-block;
         max-width: 100%;
         white-space: normal;
-      }
-    }
-  }
-}
-
-// Mobile adjustments
-@media (max-width: 768px) {
-  .header {
-    .header-banner {
-      .header-content {
-        top: 40%;
-        transform: translate(-50%, -40%);
-        width: 95%;
-        
-        .company-name {
-          font-size: 1.2rem;
-          padding: 0.3rem 0.6rem;
-          margin-bottom: 0.5rem;
-          display: block;
-          width: fit-content;
-          margin-left: auto;
-          margin-right: auto;
-        }
-        
-        .tagline {
-          font-size: 0.9rem;
-          letter-spacing: 0.2em;
-          padding: 0.3rem 0.6rem;
-          display: block;
-          width: fit-content;
-          margin-left: auto;
-          margin-right: auto;
-        }
+        background-color: rgba($primary-color, 0.45);
       }
     }
   }
@@ -166,25 +160,19 @@ body {
 // Navigation
 .nav {
   background-color: $dark-bg;
-  padding: 1rem 0;
+  padding: $spacing-sm 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: $shadow-md;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: 100%;
  
   .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    @include content-container;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    
-    @media (max-width: 768px) {
-      padding: 0 1rem;
-    }
   }
  
   .menu-toggle {
@@ -192,9 +180,9 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: $spacing-xs;
     position: absolute;
-    left: 1rem;
+    left: $spacing-sm;
     top: 50%;
     transform: translateY(-50%);
     
@@ -202,9 +190,9 @@ body {
       display: block;
       width: 25px;
       height: 2px;
-      background-color: #D5EDB3;
+      background-color: $light-bg;
       position: relative;
-      transition: $transition;
+      transition: all 0.3s ease;
       
       &::before,
       &::after {
@@ -212,8 +200,8 @@ body {
         position: absolute;
         width: 25px;
         height: 2px;
-        background-color: #D5EDB3;
-        transition: $transition;
+        background-color: $light-bg;
+        transition: all 0.3s ease;
         left: 0;
       }
       
@@ -237,16 +225,16 @@ body {
       list-style: none;
       margin: 0;
       padding: 0;
-      gap: 2rem;
+      gap: $spacing-md;
       
       a {
-        color: #D5EDB3;
+        color: $light-bg;
         text-decoration: none;
         font-family: $font-secondary;
         font-weight: 500;
-        transition: $transition;
-        padding: 0.75rem 1.5rem;
-        border-radius: $border-radius;
+        transition: all 0.3s ease;
+        padding: $spacing-sm $spacing-md;
+        border-radius: 12px;
         position: relative;
         text-align: center;
         white-space: nowrap;
@@ -259,7 +247,7 @@ body {
           width: 0;
           height: 2px;
           background: $secondary-color;
-          transition: $transition;
+          transition: all 0.3s ease;
           transform: translateX(-50%);
         }
         
@@ -284,8 +272,117 @@ body {
   }
 }
 
-// Mobile Navigation
-@media (max-width: 768px) {
+// Main content
+.main-content {
+  flex: 1;
+  padding: $spacing-lg 0;
+  background-color: $light-bg;
+  width: 100%;
+  box-sizing: border-box;
+  
+  > * {
+    @include content-container;
+  }
+ 
+  h1 {
+    @include section-heading;
+    font-size: 2.75rem;
+    padding-bottom: $spacing-sm;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: $accent-color;
+    }
+  }
+}
+
+// Services
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $spacing-md;
+  margin: $spacing-lg auto;
+  @include content-container;
+ 
+  .service-card {
+    @include card-style;
+    
+    h3 {
+      color: $primary-color;
+      font-family: $font-secondary;
+      margin-bottom: $spacing-md;
+      font-size: 1.5rem;
+      position: relative;
+      padding-bottom: $spacing-xs;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: $accent-color;
+      }
+    }
+  }
+}
+
+// CTA Section
+.cta-section {
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(245, 255, 228, 0.4), rgba(245, 255, 228, 0.8));
+  margin: $spacing-lg 0;
+  @include content-container;
+  padding: $spacing-xl $spacing-md;
+  
+  h2 {
+    @include section-heading;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    color: $text-color;
+    margin-bottom: $spacing-md;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: $spacing-sm;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+// Mobile adjustments
+@media (max-width: $mobile) {
+  .header {
+    .header-banner {
+      .header-content {
+        top: 40%;
+        transform: translate(-50%, -40%);
+        
+        .company-name {
+          font-size: 1.2rem;
+        }
+        
+        .tagline {
+          font-size: 0.9rem;
+          letter-spacing: 0.2em;
+        }
+      }
+    }
+  }
+  
   .nav {
     .menu-toggle {
       display: block;
@@ -300,7 +397,7 @@ body {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.3s ease;
-      box-shadow: $shadow-md;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       z-index: 1000;
       
       &.active {
@@ -309,7 +406,7 @@ body {
       
       ul {
         flex-direction: column;
-        padding: 1rem 0;
+        padding: $spacing-sm 0;
         gap: 0;
         
         li {
@@ -318,7 +415,7 @@ body {
           
           a {
             display: block;
-            padding: 1rem;
+            padding: $spacing-sm;
             font-size: 1.1rem;
             width: 100%;
             
@@ -334,149 +431,9 @@ body {
       }
     }
   }
-}
-
-// Main content
-.main-content {
-  flex: 1;
-  padding: 3rem 0;
-  background-color: $light-bg;
-  width: 100%;
-  box-sizing: border-box;
   
-  > * {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    
-    @media (max-width: 768px) {
-      padding: 0 1rem;
-    }
-  }
- 
-  h1 {
-    font-family: $font-secondary;
-    color: $secondary-color;
-    font-size: 2.75rem;
-    margin-bottom: 2rem;
-    font-weight: 700;
-    letter-spacing: 0.21em;
-    text-align: center;
-    position: relative;
-    padding-bottom: 1rem;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 3px;
-      background: $accent-color;
-    }
-  }
- 
-  h2 {
-    font-family: $font-secondary;
-    color: $secondary-color;
-    font-size: 2.25rem;
-    margin: 3rem 0 1.5rem;
-    letter-spacing: 0.21em;
-    position: relative;
-    padding-left: 0;
-  }
- 
-  p {
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    line-height: 1.8;
-  }
- 
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 2rem 0;
-    
-    li {
-      position: relative;
-      padding-left: 2rem;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      
-      &::before {
-        content: "✓";
-        color: $secondary-color;
-        position: absolute;
-        left: 0;
-        font-weight: bold;
-      }
-    }
-  }
-}
-
-// Services section
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 3rem auto;
-  max-width: 1200px;
-  padding: 0 2rem;
- 
-  @media (max-width: 768px) {
-    padding: 0 1rem;
+  .services {
     grid-template-columns: 1fr;
-  }
- 
-  .service-card {
-    background: white;
-    padding: 2.5rem;
-    border-radius: $border-radius;
-    box-shadow: $shadow-md;
-    transition: $transition;
-    border: 1px solid $secondary-color;
-    position: relative;
-    overflow: hidden;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: $secondary-color;
-    }
-    
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: $shadow-lg;
-    }
-    
-    h3 {
-      color: $primary-color;
-      font-family: $font-secondary;
-      margin-bottom: 1.5rem;
-      font-size: 1.5rem;
-      position: relative;
-      padding-bottom: 0.5rem;
-      
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 50px;
-        height: 2px;
-        background: $accent-color;
-      }
-    }
-    
-    p {
-      color: $text-color;
-      line-height: 1.8;
-    }
   }
 }
 
@@ -591,25 +548,25 @@ body {
 .footer {
   background-color: $light-bg;
   color: $secondary-color;
-  padding: 3rem 0;
+  padding: $spacing-lg 0;
   margin-top: auto;
   border-top: 1px solid $secondary-color;
  
   .footer-content {
-    @include responsive-container;
+    @include content-container;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
+    gap: $spacing-lg;
     max-width: 800px;
     margin: 0 auto;
     
     h3 {
       font-family: $font-secondary;
-      margin-bottom: 1.5rem;
+      margin-bottom: $spacing-md;
       color: $primary-color;
       font-size: 1.5rem;
       position: relative;
-      padding-bottom: 0.5rem;
+      padding-bottom: $spacing-xs;
       
       &::after {
         content: '';
@@ -627,7 +584,7 @@ body {
       text-decoration: none;
       transition: $transition;
       display: inline-block;
-      margin-bottom: 0.5rem;
+      margin-bottom: $spacing-xs;
       
       &:hover {
         color: $accent-color;
@@ -638,8 +595,8 @@ body {
     .social-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
+      gap: $spacing-xs;
+      margin-top: $spacing-sm;
       
       .social-icon {
         color: $primary-color;
@@ -657,13 +614,13 @@ body {
   
   .copyright {
     text-align: center;
-    margin-top: 3rem;
-    padding-top: 2rem;
+    margin-top: $spacing-lg;
+    padding-top: $spacing-md;
     border-top: 1px solid $secondary-color;
     font-weight: bold;
     color: $primary-color;
     max-width: 800px;
-    margin: 3rem auto 0;
+    margin: $spacing-lg auto 0;
   }
 }
 
@@ -732,49 +689,6 @@ body {
   }
 }
 
-// CTA section
-.cta-section {
-  text-align: center;
-  padding: 4rem 0;
-  background: linear-gradient(to bottom, rgba(245, 255, 228, 0.4), rgba(245, 255, 228, 0.8));
-  margin: 3rem 0;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 4rem 2rem;
-  
-  @media (max-width: 768px) {
-    padding: 3rem 1rem;
-  }
-  
-  h2 {
-    font-family: $font-secondary;
-    color: $primary-color;
-    font-size: 2.25rem;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-    letter-spacing: 0.21em;
-    position: relative;
-    padding-left: 0;
-  }
-  
-  p {
-    font-size: 1.2rem;
-    color: $text-color;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .cta-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-}
-
 // Partners section
 .partners {
   text-align: center;
@@ -810,7 +724,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2rem;
+  padding: $spacing-sm $spacing-md;
   border-radius: $border-radius;
   font-family: $font-secondary;
   font-weight: 600;
@@ -820,7 +734,7 @@ body {
   
   &.primary {
     background-color: $primary-color;
-    color: white;
+    color: $white;
     border: 2px solid $primary-color;
     
     &:hover {
@@ -837,7 +751,7 @@ body {
     
     &:hover {
       background-color: $primary-color;
-      color: white;
+      color: $white;
       transform: translateY(-2px);
     }
   }
@@ -886,8 +800,8 @@ body {
   }
   
   .testimonial-card {
-    background: white;
-    padding: 2.5rem;
+    background: $white;
+    padding: $spacing-lg;
     border-radius: $border-radius;
     box-shadow: $shadow-md;
     position: relative;
@@ -1068,8 +982,8 @@ body {
       img {
         max-width: 100%;
         height: auto;
-        border-radius: $border-radius;
-        box-shadow: $shadow-md;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         margin-bottom: 1rem;
       }
       
@@ -1111,6 +1025,12 @@ body {
       height: auto;
       border-radius: $border-radius;
       box-shadow: $shadow-md;
+      transition: $transition;
+      
+      &:hover {
+        transform: scale(1.02);
+        box-shadow: $shadow-lg;
+      }
     }
   }
   

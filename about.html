@@ -1,30 +1,42 @@
 ---
-layout:   default
-title:    About
+layout: default
+title: About
 ---
-<h1>About Us</h1>
 
-<div id="photocaption"><img src="images/rob.jpg" /><br />
-    Rob Leitschuh<br />
-    &nbsp;</div>
+<section class="about-page">
+    <h1>About Us</h1>
 
-<p><strong>Rob Leitschuh, CEO</strong></p>
+    <div class="profile">
+        <div class="profile-image">
+            <img src="images/rob.jpg" alt="Rob Leitschuh" />
+            <div class="profile-name">Rob Leitschuh</div>
+        </div>
 
-<p>I have been in the painting business for 35 years. In those years I have seen the changes in product
-    use and the new innovative products available. Because I&rsquo;ve worked on every style of house in
-    New England, I know just where and when to use these new materials to give you the most beautiful
-    paint job you can get.</p>
+        <div class="profile-content">
+            <h2>Rob Leitschuh, CEO</h2>
 
-<p>Over these years I&rsquo;ve worked on private homes from Victorian to Capes and Federal Houses to log
-    homes that were 200-hundred years old, or brand new. I&rsquo;ve also painted and repaired commercial
-    buildings, offices, and schools. Because of this experience, I&rsquo;m well versed in the problems
-    and obstacles they may present to a perfect job. So, I know how to do the job right!</p>
+            <p>I have been in the painting business for 45 years. In those years I have seen the changes in product
+                use and the new innovative products available. Because I've worked on every style of house in
+                New England, I know just where and when to use these new materials to give you the most beautiful
+                paint job you can get.</p>
 
-<div id="photocaption"><img src="images/paintingls_sm.jpg" /></div>
+            <p>Over these years I've worked on private homes from Victorian to Capes and Federal Houses to log
+                homes that were 200-hundred years old, or brand new. I've also painted and repaired commercial
+                buildings, offices, and schools. Because of this experience, I'm well versed in the problems
+                and obstacles they may present to a perfect job. So, I know how to do the job right!</p>
+        </div>
+    </div>
 
-<p><strong>The Green Mountain Painting Crews</strong>.</p>
+    <div class="team-image">
+        <img src="images/paintingls_sm.jpg" alt="Green Mountain Painting Crew" />
+    </div>
 
-<p>Our crew members are seasoned painters with a wide range of experience. They also know houses,
-    paints, and are committed to our standards of excellence...and your satisfaction.</p>
+    <div class="team-content">
+        <h2>The Green Mountain Painting Crew</h2>
 
-<p>Call or <a href="mailto:paintmegmp@gmail.com">email us</a> to see how we can help you today.</p>
+        <p>Our crew members are seasoned painters with a wide range of experience. They also know houses,
+            paints, and are committed to our standards of excellence...and your satisfaction.</p>
+    </div>
+
+    {% include cta.html %}
+</section>

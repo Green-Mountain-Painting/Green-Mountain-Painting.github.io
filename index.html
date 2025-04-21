@@ -1,24 +1,37 @@
 ---
-layout:   default
-title:    Home
+layout: default
+title: Home
 ---
-<h1>Over 45 Years of Experience</h1>
 
-<p><strong>We do more than just paint.</strong></p>
+<section class="hero">
+    <h1>Over 45 Years of Experience</h1>
+    <p class="lead">Professional painting and home improvement services you can trust</p>
+</section>
 
-<ul>
-    <li>Interior and Exterior Painting</li>
-    <li>Carpentry</li>
-    <li>Remove and Hang wallpaper</li>
-    <li>Install, sand and finish hard wood floors</li>
-    <li>Power Washing</li>
-</ul>
+<section class="services">
+    <div class="service-card">
+        <h3>Interior & Exterior Painting</h3>
+        <p>Expert painting services for both residential and commercial properties, using high-quality materials and techniques.</p>
+    </div>
+    
+    <div class="service-card">
+        <h3>Carpentry</h3>
+        <p>Custom carpentry work including trim, molding, and custom woodwork to enhance your space.</p>
+    </div>
+    
+    <div class="service-card">
+        <h3>Hardwood Floors</h3>
+        <p>Complete hardwood floor services including installation, sanding, and finishing.</p>
+    </div>
+</section>
 
-<p>For general contracting needs see our sister company <a href="../paradigm.html">
-    <span style="color: red; ">Paradigm Construction, LLC</span>
-</a>.</p>
+{% include cta.html %}
 
-<p>Call or <a href="mailto:paintmegmp@gmail.com">email us</a> to see how we can help you today.</p>
-
-<h2>&nbsp;</h2>
+<section class="cta-section">
+    <h2>Our Partners</h2>
+    <p>For general contracting needs, check out our sister company:</p>
+    <div class="cta-buttons">
+        <a href="/paradigm.html" class="button primary">Paradigm Construction, LLC</a>
+    </div>
+</section>
 

@@ -1,0 +1,10 @@
+<nav class="nav">
+    <ul>
+        <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+        <li><a href="{{ '/about.html' | relative_url }}" {% if page.url == '/about.html' %}class="active"{% endif %}>About</a></li>
+        <li><a href="{{ '/services.html' | relative_url }}" {% if page.url == '/services.html' %}class="active"{% endif %}>Services</a></li>
+        <li><a href="{{ '/gallery.html' | relative_url }}" {% if page.url == '/gallery.html' %}class="active"{% endif %}>Gallery</a></li>
+        <li><a href="{{ '/refs.html' | relative_url }}" {% if page.url == '/refs.html' %}class="active"{% endif %}>References</a></li>
+        <li><a href="mailto:paintmegmp@gmail.com">Contact</a></li>
+    </ul>
+</nav> 

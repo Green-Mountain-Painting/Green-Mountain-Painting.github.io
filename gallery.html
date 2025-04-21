@@ -1,76 +1,82 @@
 ---
-layout:   default
-title:    Gallery
+layout: default
+title: Gallery
 ---
 
-<h1>Job Gallery</h1>
-
-<div class="figure">
-    <div class="photo"><img alit="floors" height="220" src="images/paintingls.jpg" width="225" /></div>
-
-    <p>Painting Lyme School</p>
-</div>
-
-<div class="figure">
-    <div class="photo"><img alit="floors" height="220" src="images/house.jpg" width="225" /></div>
-
-    <p>Strip and reseal the logs</p>
-</div>
-
-<div class="figure">
-    <div class="photo">
-        <img alit="floors" height="220" src="images/paintls4.jpg" width="225" /></div>
-
-    <p>Painting Lyme School</p>
-</div>
-
-<div class="figure">
-    <div class="photo">
-        <img alit="floors" height="220" src="images/house2.jpg" width="225" /></div>
-
-    <p>Working on log home</p>
-</div>
-
-<div class="figure">
-    <div class="photo">
-        <img alit="floors" height="220" src="images/paintls2.jpg" width="225" /></div>
-
-    <p>Painting Lyme School</p>
-</div>
-
-<div class="figure">
-    <div class="photo">
-        <img alit="floors" height="220" src="images/house3.jpg" width="225" /></div>
-
-    <p>Log home - Woodstock, VT</p>
-</div>
-
-<div class="figure">
-    <div class="photo">
-        <img alit="floors" height="220" src="images/paintls3.jpg" width="225" /></div>
-
-    <p>Painting Lyme School</p>
-</div>
-
-<div class="figure">
-    <div class="photo">
-        <img alit="floors" height="220" src="images/home.jpg" width="225" /></div>
-
-    <p>Restained the exterior</p>
-</div>
-
-<div class="figure">
-    <div class="photo">
-        <img alit="floors" height="220" src="images/paintls5.jpg" width="225" /></div>
-
-    <p>Painting Lyme School</p>
-</div>
-
-<div class="figure">
-    <div class="photo">
-        <img alit="floors" height="220" src="images/floorsandwalls.jpg" width="225" /></div>
-
-    <p>New flooring and painting</p>
-</div>
-</div>
-<!-- end #mainContent -->
+<section class="gallery">
+    <h1>Job Gallery</h1>
+    
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <a href="{{ '/images/paintingls.jpg' | relative_url }}" data-lightbox="gallery" data-title="Painting Lyme School">
+                <img src="{{ '/images/paintingls.jpg' | relative_url }}" alt="Painting Lyme School">
+                <div class="gallery-caption">Painting Lyme School</div>
+            </a>
+        </div>
+        
+        <div class="gallery-item">
+            <a href="{{ '/images/paintls4.jpg' | relative_url }}" data-lightbox="gallery" data-title="Painting Lyme School">
+                <img src="{{ '/images/paintls4.jpg' | relative_url }}" alt="Painting Lyme School">
+                <div class="gallery-caption">Painting Lyme School</div>
+            </a>
+        </div>
+        
+        <div class="gallery-item">
+            <a href="{{ '/images/house2.jpg' | relative_url }}" data-lightbox="gallery" data-title="Working on log home">
+                <img src="{{ '/images/house2.jpg' | relative_url }}" alt="Working on log home">
+                <div class="gallery-caption">Working on log home</div>
+            </a>
+        </div>
+        
+        <div class="gallery-item">
+            <a href="{{ '/images/house.jpg' | relative_url }}" data-lightbox="gallery" data-title="Strip and reseal the logs">
+                <img src="{{ '/images/house.jpg' | relative_url }}" alt="Strip and reseal the logs">
+                <div class="gallery-caption">Strip and reseal the logs</div>
+            </a>
+        </div>
+        
+        <div class="gallery-item">
+            <a href="{{ '/images/paintls2.jpg' | relative_url }}" data-lightbox="gallery" data-title="Painting Lyme School">
+                <img src="{{ '/images/paintls2.jpg' | relative_url }}" alt="Painting Lyme School">
+                <div class="gallery-caption">Painting Lyme School</div>
+            </a>
+        </div>
+        
+        <div class="gallery-item">
+            <a href="{{ '/images/house3.jpg' | relative_url }}" data-lightbox="gallery" data-title="Log home - Woodstock, VT">
+                <img src="{{ '/images/house3.jpg' | relative_url }}" alt="Log home - Woodstock, VT">
+                <div class="gallery-caption">Log home - Woodstock, VT</div>
+            </a>
+        </div>
+        
+        <div class="gallery-item">
+            <a href="{{ '/images/paintls3.jpg' | relative_url }}" data-lightbox="gallery" data-title="Painting Lyme School">
+                <img src="{{ '/images/paintls3.jpg' | relative_url }}" alt="Painting Lyme School">
+                <div class="gallery-caption">Painting Lyme School</div>
+            </a>
+        </div>
+        
+        <div class="gallery-item">
+            <a href="{{ '/images/home.jpg' | relative_url }}" data-lightbox="gallery" data-title="Restained the exterior">
+                <img src="{{ '/images/home.jpg' | relative_url }}" alt="Restained the exterior">
+                <div class="gallery-caption">Restained the exterior</div>
+            </a>
+        </div>
+        
+        <div class="gallery-item">
+            <a href="{{ '/images/paintls5.jpg' | relative_url }}" data-lightbox="gallery" data-title="Painting Lyme School">
+                <img src="{{ '/images/paintls5.jpg' | relative_url }}" alt="Painting Lyme School">
+                <div class="gallery-caption">Painting Lyme School</div>
+            </a>
+        </div>
+        
+        <div class="gallery-item">
+            <a href="{{ '/images/floorsandwalls.jpg' | relative_url }}" data-lightbox="gallery" data-title="New flooring and painting">
+                <img src="{{ '/images/floorsandwalls.jpg' | relative_url }}" alt="New flooring and painting">
+                <div class="gallery-caption">New flooring and painting</div>
+            </a>
+        </div>
+    </div>
+    
+    {% include cta.html %}
+</section>

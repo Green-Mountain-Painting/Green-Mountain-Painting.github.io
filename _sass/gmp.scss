@@ -598,10 +598,34 @@ body {
   .footer-content {
     @include responsive-container;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .footer-section {
+      min-width: 0; // Prevents content from overflowing grid cell
+      
+      ul {
+        padding-left: 0;
+        list-style-type: none;
+        margin: 0;
+        
+        li {
+          margin-bottom: 0.5rem;
+          position: relative;
+          padding-left: 0;
+          
+          &::before {
+            content: none;
+          }
+        }
+      }
+    }
     
     h3 {
       font-family: $font-secondary;
@@ -1050,13 +1074,34 @@ body {
     letter-spacing: 0.21em;
   }
   
+  // Common section styles for all sections on the about page
+  .profile, .team-section, .service-area-section {
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+    
+    h2 {
+      font-family: $font-secondary;
+      color: $primary-color;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.21em;
+      text-align: center;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: $text-color;
+      margin-bottom: 1.5rem;
+    }
+  }
+  
   .profile {
     display: grid;
     grid-template-columns: 300px 1fr;
     gap: 2rem;
-    max-width: 1000px;
-    margin: 0 auto 3rem;
-    padding: 0 2rem;
     
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
@@ -1083,56 +1128,8 @@ body {
     
     .profile-content {
       h2 {
-        font-family: $font-secondary;
-        color: $primary-color;
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-        font-weight: 700;
-        letter-spacing: 0.21em;
+        text-align: left;
       }
-      
-      p {
-        font-size: 1.1rem;
-        line-height: 1.8;
-        color: $text-color;
-        margin-bottom: 1.5rem;
-      }
-    }
-  }
-  
-  .team-image {
-    text-align: center;
-    margin: 3rem auto;
-    max-width: 800px;
-    padding: 0 2rem;
-    
-    img {
-      max-width: 100%;
-      height: auto;
-      border-radius: $border-radius;
-      box-shadow: $shadow-md;
-    }
-  }
-  
-  .team-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    
-    h2 {
-      font-family: $font-secondary;
-      color: $primary-color;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.21em;
-    }
-    
-    p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: $text-color;
-      margin-bottom: 1.5rem;
     }
   }
 }
@@ -1182,6 +1179,76 @@ body {
             &:hover {
                 transform: scale(1.02);
                 box-shadow: $shadow-lg;
+            }
+        }
+    }
+}
+
+/* Service Area Section */
+.service-area-section {
+    margin: 4rem 0;
+    padding: 2rem;
+    background-color: $light-bg;
+    border-radius: $border-radius;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    h2 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+        color: $primary-color;
+        font-family: $font-secondary;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 0.21em;
+    }
+    
+    p {
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        font-size: 1.1rem;
+        color: $text-color;
+    }
+    
+    .service-areas {
+        display: flex;
+        justify-content: center;
+        gap: 4rem;
+        margin-bottom: 2rem;
+        
+        @media (max-width: 768px) {
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
+    
+    .service-area-column {
+        min-width: 200px;
+        
+        h3 {
+            color: $primary-color;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid $accent-color;
+            padding-bottom: 0.5rem;
+            font-family: $font-secondary;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            
+            li {
+                margin-bottom: 0.5rem;
+                padding-left: 1.5rem;
+                position: relative;
+                
+                &:before {
+                    content: "•";
+                    color: $accent-color;
+                    position: absolute;
+                    left: 0;
+                }
             }
         }
     }

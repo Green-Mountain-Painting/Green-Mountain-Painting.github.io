@@ -21,6 +21,16 @@
     <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BH8JLX47QE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BH8JLX47QE');
+    </script>
 </head>
 
 <body>
@@ -29,10 +39,11 @@
         {% include sidebar.html %}
         <div id="mainContent">
             {{ content }}
-        <div>
-            <!-- This clearing element should immediately follow the #mainContent div in order to force the #container div to contain all child floats -->
-        {% include footer.html %}
-    </div>
+            <div>
+                <!-- This clearing element should immediately follow the #mainContent div in order to force the #container div to contain all child floats -->
+                {% include footer.html %}
+            </div>
+        </div>
 </body>
 
 </html>

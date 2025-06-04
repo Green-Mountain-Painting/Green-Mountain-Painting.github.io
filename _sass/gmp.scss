@@ -126,6 +126,33 @@ body {
         max-width: 100%;
         white-space: normal;
       }
+      
+      .cta-button {
+        display: inline-block;
+        margin-top: 1.5rem;
+        background-color: $accent-color;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 4px;
+        font-family: $font-secondary;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        
+        &:hover {
+          background-color: darken($accent-color, 10%);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        &:active {
+          transform: translateY(1px);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+      }
     }
   }
 }
@@ -134,10 +161,24 @@ body {
 @media (max-width: 768px) {
   .header {
     .header-banner {
+      height: 70vh;
+      overflow: hidden;
+      position: relative;
+      
+      .banner-img {
+        width: auto;
+        height: 100%;
+        max-width: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
       .header-content {
-        top: 40%;
-        transform: translate(-50%, -40%);
+        top: 45%;
+        transform: translate(-50%, -50%);
         width: 95%;
+        padding-bottom: 30px;
         
         .company-name {
           font-size: 1.2rem;
@@ -153,6 +194,16 @@ body {
           font-size: 0.9rem;
           letter-spacing: 0.2em;
           padding: 0.3rem 0.6rem;
+          display: block;
+          width: fit-content;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        
+        .cta-button {
+          margin-top: 1.5rem;
+          font-size: 1rem;
+          padding: 0.6rem 1.2rem;
           display: block;
           width: fit-content;
           margin-left: auto;
